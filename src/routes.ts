@@ -1,6 +1,8 @@
 import express from "express";
 import UserServices from './services/UserServices'
 import {verifyToken} from './authentication/Auth'
+import createPdf from './utils/GeneratePDF'
+import ChecklistCovidServices from './services/ChecklistCovidServices'
 
 const routes = express.Router();
 
@@ -17,5 +19,9 @@ routes.post('/login', UserServices.loginUser);
 routes.put('/updatePassword', verifyToken, UserServices.updatePassword);
 
 routes.post('/forgotPassword', UserServices.forgotPassword);
+
+routes.post('/forgotPassword', UserServices.forgotPassword);
+
+routes.post('/createCovidChecklist', ChecklistCovidServices.createChecklist);
 
 export default routes;

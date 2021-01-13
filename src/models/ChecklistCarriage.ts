@@ -15,8 +15,6 @@ const ChecklistsCarriageSchema = mongoose.Schema({
             carriageInfos: {
                 gloves: Boolean,
                 vest: Boolean,
-                helmet: Boolean,
-                truckOk: Boolean,
                 chock: Boolean,
                 mask: Boolean,
                 safetyShoes: Boolean,

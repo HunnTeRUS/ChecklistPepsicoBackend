@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+html,
+body {
+    Margin: 0 auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #004A8C
+}
+
+* {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 700px;
+    min-height: 90vw;
+    min-width: 700px;
+    max-width: 700px;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    background-color: white
+}
+
+/* HEADER */
+.headerContent {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textContent {
+    flex-grow: 1;
+    padding: 30;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerSubTitle {
+    font-family: 'Lato', sans-serif;
+    margin-top: 10px;
+    font-size: 13pt;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: justify;
+}
+
+.infoContent {
+    flex-grow: 1;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.imageLogo {
+    width: 300px;
+    height: 300px;
+}
+
+.dayContainer {
+    display: flex;
+    border-radius: 15px;
+    width: 40%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    align-items: center;
+    padding: 0 20 0 20;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+}
+
+.dayTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #004A8C;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.daySubTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 12pt;
+    margin-top: 3px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.personContainer {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* /HEADER */
+
+
+
+/* CONTENT */
+
+.content {
+  flex-grow: 1;
+  margin-top: 300px;
+  padding: 0 30 0 30;
+}
+
+.contentTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.contentFormTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+}
+
+.contentFormSubTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.form {
+  margin-top: 20px;
+  min-height: 25px;
+}
+
+.infoCovidContent1 {
+  margin-top: 40px;
+  display: flex;
+  flex-grow: 1;
+  padding: 20 20 20 20;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.infos {
+  max-width: 55%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.askAndPic {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+}
+
+.infoCovidContentTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    align-self: center;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.imageLogo {
+  height: 200px;
+  flex-grow: 1
+}
+
+.yesNoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+  width: 80%;
+  padding: 0 40px 0 40px;
+}
+
+.yesNoContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.square {
+    height: 20px;
+    width: 20px;
+    border: 3px solid black;
+}
+
+.response {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    margin-left: 10px
+}
+
+/* /CONTENT */
+
+/* FOOTER */
+
+.footer {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  width: 70%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.labelFooter {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+/* /FOOTER */

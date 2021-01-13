@@ -29,6 +29,8 @@
     "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.8",
     "@types/dotenv": "^8.2.0",
+    "@types/html-pdf": "^2.2.0",
+    "@types/html5-to-pdf": "^3.1.1",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.14.10",
     "bcrypt": "^5.0.0",
@@ -38,8 +40,11 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.6",
+    "html-pdf": "^2.2.0",
+    "html5-to-pdf": "^4.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.1",
-    "nodemailer": "^6.4.17"
+    "nodemailer": "^6.4.17",
+    "puppeteer": "^5.5.0"
   }
 }
