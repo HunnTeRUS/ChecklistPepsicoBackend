@@ -1,0 +1,486 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700%7CPlayfair+Display:700,400%7CKarla:700,400%7CKarla:700,700" rel="stylesheet" type="text/css" data-premailer="ignore">
+</head>
+
+<style>
+
+html,
+body {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #004A8C
+}
+
+* {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 800px !important;
+    min-height: 250vw;
+    margin: auto;
+    justify-content: space-between;
+    flex-direction: column;
+    display: -webkit-box;
+    display: flex;
+    background-color: white
+}
+
+/* HEADER */
+.headerContent {
+    width: 100%;
+    height: 250px;
+    display: -webkit-box;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textContent {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    padding: 30;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleContent {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerSubTitle {
+    font-family: 'Lato', sans-serif;
+    margin-top: 10px;
+    font-size: 13pt;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: justify;
+}
+
+.infoContent {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    margin-top: 25px;
+    display: -webkit-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.imageLogo {
+    width: 300px;
+    height: 300px;
+}
+
+.dayContainer {
+    display: -webkit-box;
+    display: flex;
+    border-radius: 15px;
+    width: 40%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    align-items: center;
+    padding: 0 20 0 20;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+}
+
+.dayTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #004A8C;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.daySubTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 12pt;
+    margin-top: 3px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.personContainer {
+    display: -webkit-box;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* /HEADER */
+
+
+
+/* CONTENT */
+
+.content {
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  margin-top: 300px;
+  padding: 0 30 0 30;
+}
+
+.contentTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.contentFormTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+}
+
+.contentFormSubTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.form {
+  margin-top: 20px;
+  min-height: 25px;
+}
+
+.infoCovidContent1 {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: flex;
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  padding: 20 20 20 20;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.infos {
+  max-width: 55%;
+  flex-direction: column;
+  display: -webkit-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.askAndPic {
+  flex-direction: row;
+  display: -webkit-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+}
+
+.infoCovidContentTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    align-self: center;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.imageLogo {
+  height: 200px;
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+}
+
+.carriageInfoContainer {
+  display: flex;
+  margin-top: 130px;
+  flex-direction: column;
+  padding: 30px 0 0 0;
+}
+
+.infoTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 15pt;
+    margin-bottom: 50px;
+}
+
+.carriageInfoSubContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carriageInfoSubFirstOptions {
+    height: 200px;
+    width: "100%";
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-bottom: 50px;
+    flex-direction: row;
+    display: flex;
+}
+
+.carriageInfoSubOption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin: 10px 0 10px 0;
+    margin-bottom: 20px;
+    padding: 80px 20px 30px 20px;
+    min-height: 100px;
+    flex-direction: column;
+}
+
+.infoCarriagePic {
+    max-width:150px;
+    max-height:150px;
+    min-width:150px;
+    min-height:150px;
+    width: auto;
+    height: auto;
+    background-color: white
+}
+
+.infoCarriageSubTitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 13pt;
+    margin-bottom: 50px;
+}
+
+/* /CONTENT */
+
+/* FOOTER */
+
+.footer {
+  height: 100px;
+  display: -webkit-box;
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  width: 70%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.labelFooter {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+/* /FOOTER */
+
+</style>
+
+<body class="body" id="body">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="headerContent">
+            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/rodapeOriginal.svg" class="imageLogo"/>
+            <div class="textContent">
+                <div class="titleContent">
+                  <label class="headerTitle">Checklist de segurança</label>
+                  <label class="headerSubTitle">Checklist realizado pela empresa Pepsico, para assegurar a segurança de todos os colaboradores durante o carregamento. Todos os dados foram coletados individualmente.</label>
+                </div>
+                <div class="infoContent">
+                  <div class="dayContainer">
+                    <i class="material-icons" style="font-size: 40px; color: #004A8C">event</i>
+
+                    <label class="dayTitle">Realizado no dia:</label>
+                    <label class="daySubTitle">{{date}}</label>
+                  </div>
+                  <div class="dayContainer">
+                    <i class="material-icons" style="font-size: 40px; color: #004A8C">assignment_ind</i>
+
+                    <label class="dayTitle">Realizado por:</label>
+                    <label class="daySubTitle">{{realizedBy}}</label>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- /HEADER -->
+
+        <!-- CONTENT -->
+
+        <div class="content">
+          <label class="contentTitle">Dados coletados:</label>
+
+          <div class="form">
+              <label class="contentFormTitle">Nome do motorista: </label><label class="contentFormSubTitle">{{driverName}}</label>
+          </div>
+
+          <div class="form">
+              <label class="contentFormTitle">CPF do motorista: </label><label class="contentFormSubTitle">{{driverCPF}}</label>
+          </div>
+
+          <div class="form">
+              <label class="contentFormTitle">Nome do ajudante: </label><label class="contentFormSubTitle">{{coDriverName}}</label>
+          </div>
+
+          <div class="form">
+              <label class="contentFormTitle">CPF do ajudante: </label><label class="contentFormSubTitle">{{coDriverCPF}}</label>
+          </div>
+
+          <div class="form">
+              <label class="contentFormTitle">Placa do caminhão: </label><label class="contentFormSubTitle">{{truckPlate}}</label>
+          </div>
+
+          <div class="form">
+              <label class="contentFormTitle">Unidade atendida: </label><label class="contentFormSubTitle">{{currentUnit}}</label>
+          </div>
+
+          <div class="form" style="min-height: 250px; max-height: 250px;">
+              <label class="contentFormTitle">Observações: </label><label class="contentFormSubTitle">{{observations}}</label>
+          </div>
+
+          <div class="carriageInfoContainer">
+              <label class="infoTitle">Informações sobre o carregamento</label>
+
+              <div class="carriageInfoSubContainer">
+                  <div class="carriageInfoSubFirstOptions">
+                      {{#if carriageInfos.vest}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/.-1.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Colete</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/.-1.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Colete</label>
+                        </div>
+                      {{/if}}
+
+                      {{#if carriageInfos.chock}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/.-3.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Calço</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/.-3.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Calço</label>
+                        </div>
+                      {{/if}}
+
+                      {{#if carriageInfos.gloves}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/..svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Luvas</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/..svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Luvas</label>
+                        </div>
+                      {{/if}}
+                  </div>
+
+                  <div class="carriageInfoSubFirstOptions">
+                      {{#if carriageInfos.withoutAdornments}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/image-removebg-preview+1.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Sem adornos</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/image-removebg-preview+1.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Sem adornos</label>
+                        </div>
+                      {{/if}}
+
+                      {{#if carriageInfos.safetyShoes}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/safety-shoe-2654572-2200517-removebg-preview.png" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Sapatos de segurança</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/safety-shoe-2654572-2200517-removebg-preview.png" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Sapatos de seguranças</label>
+                        </div>
+                      {{/if}}
+
+                      {{#if carriageInfos.mask}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid green;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/svgg.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Mascara</label>
+                        </div>
+                      {{else}}
+                        <div class="carriageInfoSubOption" style="border: 4px solid red;">
+                            <img src="https://dailybakery-deployments-mobilehub-929841127.s3.us-east-2.amazonaws.com/svgg.svg" class="infoCarriagePic"/>
+                            <label class="infoCarriageSubTitle">Mascara</label>
+                        </div>
+                      {{/if}}
+                  </div>
+              </div>
+          </div>
+
+          <div class="form" style="min-height: 170px; max-height: 170px; overflow: hidden;">
+              <label class="contentFormTitle">Motivo de não estar usando alguns itens: </label><label class="contentFormSubTitle">{{infringementExplanation}}</label>
+          </div>
+
+          <div style="height: 100px"></div>
+
+
+        <!-- /CONTENT -->
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+          <div class="line"></div>
+          <label class="labelFooter">PEPSICO</label>
+        </div>
+
+        <!-- /FOOTER -->
+    </div>
+</body>
+
+</html>

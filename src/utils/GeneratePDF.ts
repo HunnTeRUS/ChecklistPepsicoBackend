@@ -1,4 +1,3 @@
-import { SecurityInterfacePDF } from './../interfaces/SecurityInterface';
 import { Response, Request } from "express";
 import htmlPdf from 'html-pdf'
 import fs from 'fs';
@@ -6,9 +5,10 @@ import handlebars from 'handlebars';
 import html5pdf from 'html5-to-pdf'
 import puppeteer from 'puppeteer'
 import { CheckCovidInterfaceDTO } from '../interfaces/ChecklistCovid';
+import { SecurityInterfaceDTO } from "../interfaces/SecurityInterface";
 
 export default async function createPdf(
-    replacements: CheckCovidInterfaceDTO | SecurityInterfacePDF, 
+    replacements: CheckCovidInterfaceDTO | SecurityInterfaceDTO, 
     htmlPath: string, 
     archieveName: string) {
     try {
