@@ -54,5 +54,20 @@ export = {
             }); 
         }
 
+    },
+
+    async listChecklist(request: Request, response: Response) {
+        const limit : Number = Number(request.query.limit ? request.query.limit : 0)
+        const offset : Number = Number(request.query.offset ? request.query.offset : 0)
+
+        if(
+            (limit < offset) 
+            || 
+            (offset === 0 && limit === 0)) {
+
+            return response.status(200).json(await ChecklistsCovid.find().skip(0).limit(10));
+        }
+
+        else return response.status(200).json(await ChecklistsCovid.find().skip(offset).limit(limit));
     }
 }

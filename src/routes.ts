@@ -27,4 +27,8 @@ routes.post('/createCovidChecklist', ChecklistCovidServices.createChecklist);
 
 routes.post('/createSecurityChecklist', ChecklistCarriageServices.createChecklist);
 
+routes.get('/listCovidChecklists', ChecklistCovidServices.listChecklist);
+
+routes.get('/listSecurityChecklists', ChecklistCarriageServices.listChecklist);
+
 export default routes;
