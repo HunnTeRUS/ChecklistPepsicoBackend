@@ -81,10 +81,13 @@ export = {
             init.setHours(0,0,0,0);
             end.setHours(23,59,59,999);
 
-            return response.status(200).json(await ChecklistsCovid.find(
-                {
-                    date: { $gt: init, $lt: end } 
-                }));
+            return response.status(200).json(
+                await ChecklistsCovid.find(
+                    {
+                        date: { $gt: init, $lt: end } 
+                    }
+                )
+            );
         } else {
             var init = new Date(String(date))
             var end = new Date(String(date))
@@ -99,10 +102,13 @@ export = {
             end.setSeconds(59)
             end.setMilliseconds(999)
 
-            return response.status(200).json(await ChecklistsCovid.find(
-                {
-                    date: { $gt: init, $lt: end } 
-                }));
+            return response.status(200).json(
+                await ChecklistsCovid.find(
+                    {
+                        date: { $gt: init, $lt: end } 
+                    }
+                )
+            );
         }
     }
 }

@@ -73,6 +73,24 @@ export = {
         }
     },
 
+    async removeUser(request : Request, response: Response) {
+        const {_id} = request.query
+
+        try {
+            const user = await User.findOne({ "_id": _id })
+
+            if (user) {
+                await User.removeOne({ "_id": _id })
+                return response.status(200).json();
+            }
+
+            else return response.status(404).json({ error: "Nenhum usuario foi encontrado com este ID" });
+        } catch (e) {
+            console.log(e)
+            return response.status(400).json({ error:  e });
+        }
+    },
+
     async getUserByEmail(request : Request, response: Response) {
         const email = request.query.email
         try {
