@@ -31,4 +31,6 @@ routes.get('/listCovidChecklists', ChecklistCovidServices.listChecklist);
 
 routes.get('/listSecurityChecklists', ChecklistCarriageServices.listChecklist);
 
+routes.get('/listSecurityChecklistsByDate', ChecklistCarriageServices.listChecklistByDate);
+
 export default routes;

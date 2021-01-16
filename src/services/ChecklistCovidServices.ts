@@ -69,5 +69,40 @@ export = {
         }
 
         else return response.status(200).json(await ChecklistsCovid.find().skip(offset).limit(limit));
+    },
+
+    async listChecklistByDate(request: Request, response: Response) {
+        const date : Date = new Date(request.query.date ? String(request.query.date) : String(Date.now()))
+
+        if(date.toString() === 'Invalid Date' || date.toString() === 'NaN') {
+            var init : Date = new Date()
+            var end : Date = new Date()
+            
+            init.setHours(0,0,0,0);
+            end.setHours(23,59,59,999);
+
+            return response.status(200).json(await ChecklistsCovid.find(
+                {
+                    date: { $gt: init, $lt: end } 
+                }));
+        } else {
+            var init = new Date(String(date))
+            var end = new Date(String(date))
+            
+            init.setHours(-3)
+            init.setMinutes(0)
+            init.setSeconds(0)
+            init.setMilliseconds(0)
+
+            end.setHours(20)
+            end.setMinutes(59)
+            end.setSeconds(59)
+            end.setMilliseconds(999)
+
+            return response.status(200).json(await ChecklistsCovid.find(
+                {
+                    date: { $gt: init, $lt: end } 
+                }));
+        }
     }
 }
