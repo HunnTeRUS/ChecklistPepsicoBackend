@@ -63,6 +63,7 @@ export = {
         return celebrate({
             [Segments.BODY]: Joi.object().keys({
                 cpf: Joi.string().required().min(11).max(11),
+                email: Joi.string().email().required()
             }),
         });
     },

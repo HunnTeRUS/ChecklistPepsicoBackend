@@ -155,25 +155,23 @@ export = {
     },
 
     async forgotPassword(request : Request, response: Response) {
-        const { cpf } = request.body;
+        const { cpf, email } = request.body;
         let code;
         let mailer = new Mailer();
 
         try {
-            const user = await User.findOne({ cpf: cpf });
+            const user = await User.findOne({ cpf: cpf, email: email });
             if (user) {
-                code = mailer.sendNewPasswordCodeByEmail(String(user.email)).catch((error) => {
+                await mailer.sendNewPasswordCodeByEmail(String(user.email), cpf).catch((error) => {
                     return response.status(400).json({
                         error: error
                     });
                 });
-
                 return response.status(200).json({
                     _id: user._id,
-                    code: code,
                 });
             } else {
-                return response.status(404).json({ error: "CPF inválido ou não encontrado" });
+                return response.status(404).json({ error: "CPF/Email inválido ou não encontrado" });
             }
         } catch (e) {
             console.log(e)

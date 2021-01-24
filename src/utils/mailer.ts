@@ -2,6 +2,8 @@ import fs from 'fs';
 import handlebars from 'handlebars';
 import nodemailer from 'nodemailer';
 import { email as emailConfig } from '../database/config';
+import User from '../models/User';
+import { encrypt } from './EncodeDecode';
 
 export default class Mailer {
   async gerarPassword() {
@@ -23,8 +25,11 @@ export default class Mailer {
     });
   };
 
-  async sendNewPasswordCodeByEmail(email: string) {
+  async sendNewPasswordCodeByEmail(email: string, cpf: string) {
     const code = await this.gerarPassword();
+    const novaSenhaCrypt = String(encrypt(code));
+    await User.updateOne({ "cpf": cpf }, { "password": novaSenhaCrypt });
+    
     const remetente = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -44,7 +49,7 @@ export default class Mailer {
         };
         const htmlToSend = template(replacements);
         const mailOptions = {
-          from: "odontooth@teste.com",//String(process.env.EMAIL),
+          from: emailConfig.email as string,//String(process.env.EMAIL),
           to: email,
           subject: 'Alteração de senha',
           html: htmlToSend,
@@ -56,6 +61,5 @@ export default class Mailer {
         });
       }
     );
-    return code;
   }
 }

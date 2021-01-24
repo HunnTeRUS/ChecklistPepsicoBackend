@@ -11,7 +11,7 @@ export default interface CompanyInterface {
             city: String,
         }
     ]
-}
+}               
 
 export interface UnitInterface {
     name: String,
