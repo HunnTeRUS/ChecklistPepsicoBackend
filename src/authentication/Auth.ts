@@ -15,8 +15,9 @@ export async function verifyToken(request : Request, response: Response, next: N
     const token = request.body.token || request.query.token  || request.headers['x-access-token'] || request.headers['x-auth-token'] || request.headers['token']
 
     if (token) {
-        jwt.verify(token, process.env.SECRET, function(err:any, decoded:any) {
+        jwt.verify(token, security.secret, function(err:any, decoded:any) {
             if (err) {
+                console.log(err)
                 return response.status(401).json({ error: "Acesso negado.", message: 'Invalid token' });
             }
             (<any>request).decoded = decoded;

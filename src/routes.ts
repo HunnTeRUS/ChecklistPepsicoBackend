@@ -9,54 +9,54 @@ import ApiValidations from './utils/ApiValidations'
 const routes = express.Router();
 
 //USER SERVICES
-routes.post('/userRegister', ApiValidations.validateUserInsertion, UserServices.createUser);
+routes.post('/userRegister', ApiValidations.validateUserInsertion(), UserServices.createUser);
 
 routes.get('/listUsers', UserServices.listUsers);
 
-routes.delete('/removeUser', verifyToken, ApiValidations.removeUser, UserServices.removeUser);
+routes.delete('/removeUser', verifyToken, ApiValidations.removeUser(), UserServices.removeUser);
 
-routes.get('/getUserByName', ApiValidations.getUserByName, UserServices.getUserByName);
+routes.get('/getUserByName', ApiValidations.getUserByName(), UserServices.getUserByName);
 
-routes.get('/getUserByEmail', ApiValidations.getUserByEmail, UserServices.getUserByEmail);
+routes.get('/getUserByEmail', ApiValidations.getUserByEmail(), UserServices.getUserByEmail);
 
-routes.post('/login', ApiValidations.loginUser, UserServices.loginUser);
+routes.post('/login', ApiValidations.loginUser(), UserServices.loginUser);
 
-routes.put('/updatePassword', ApiValidations.updatePassword, verifyToken, UserServices.updatePassword);
+routes.put('/updatePassword', ApiValidations.updatePassword(), verifyToken, UserServices.updatePassword);
 
-routes.post('/forgotPassword', ApiValidations.forgotPassword, UserServices.forgotPassword);
+routes.post('/forgotPassword', ApiValidations.forgotPassword(), UserServices.forgotPassword);
 //-----------------
 
 //CHECKLISTS SERVICES
-routes.post('/createCovidChecklist', ApiValidations.createCovidChecklist, verifyToken, ChecklistCovidServices.createChecklist);
+routes.post('/createCovidChecklist', ApiValidations.createCovidChecklist(), verifyToken, ChecklistCovidServices.createChecklist);
 
-routes.post('/createSecurityChecklist', ApiValidations.createCarriageChecklist, verifyToken, ChecklistCarriageServices.createChecklist);
+routes.post('/createSecurityChecklist', ApiValidations.createCarriageChecklist(), verifyToken, ChecklistCarriageServices.createChecklist);
 
-routes.get('/listCovidChecklists', ApiValidations.listCovidChecklist, ChecklistCovidServices.listChecklist);
+routes.get('/listCovidChecklists', ApiValidations.listCovidChecklist(), ChecklistCovidServices.listChecklist);
 
-routes.get('/listSecurityChecklists', ApiValidations.listCarriageChecklist, ChecklistCarriageServices.listChecklist);
+routes.get('/listSecurityChecklists', ApiValidations.listCarriageChecklist(), ChecklistCarriageServices.listChecklist);
 
-routes.get('/listSecurityChecklistsByDate', ApiValidations.listCarriageChecklistByDate, ChecklistCarriageServices.listChecklistByDate);
+routes.get('/listSecurityChecklistsByDate', ApiValidations.listCarriageChecklistByDate(), ChecklistCarriageServices.listChecklistByDate);
 
-routes.get('/listCovidChecklistsByDate', ApiValidations.listCovidChecklistByDate, ChecklistCovidServices.listChecklistByDate);
+routes.get('/listCovidChecklistsByDate', ApiValidations.listCovidChecklistByDate(), ChecklistCovidServices.listChecklistByDate);
 //-------------------
 
 
 //CARRIERS SERVICES
-routes.post('/createCarrier', ApiValidations.createCarrier, verifyToken, CompanyServices.createCarrier);
+routes.post('/createCarrier', ApiValidations.createCarrier(), verifyToken, CompanyServices.createCarrier);
 
 routes.get('/listCarriers', CompanyServices.listCarriers);
 
-routes.get('/listCarriersById', ApiValidations.listCarriersById, CompanyServices.listCarriersById);
+routes.get('/listCarriersById', ApiValidations.listCarriersById(), CompanyServices.listCarriersById);
 
-routes.get('/listCarriersByName', ApiValidations.listCarriersByName, CompanyServices.listCarriersByName);
+routes.get('/listCarriersByName', ApiValidations.listCarriersByName(), CompanyServices.listCarriersByName);
 
-routes.delete('/removeCarrier', ApiValidations.removeCarrier, verifyToken, CompanyServices.removeCarrier);
+routes.delete('/removeCarrier', ApiValidations.removeCarrier(), verifyToken, CompanyServices.removeCarrier);
 
-routes.put('/updateCarrierName', ApiValidations.updateCarrierName, verifyToken, CompanyServices.updateCarrierName);
+routes.put('/updateCarrierName', ApiValidations.updateCarrierName(), verifyToken, CompanyServices.updateCarrierName);
 
-routes.post('/insertUnity', ApiValidations.insertUnity, verifyToken, CompanyServices.insertUnity);
+routes.post('/insertUnity', ApiValidations.insertUnity(), verifyToken, CompanyServices.insertUnity);
 
-routes.delete('/removeUnity', ApiValidations.removeUnity, verifyToken, CompanyServices.removeUnity);
+routes.delete('/removeUnity', ApiValidations.removeUnity(), verifyToken, CompanyServices.removeUnity);
 //------------------
 
 
