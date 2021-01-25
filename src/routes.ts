@@ -24,6 +24,8 @@ routes.post('/login', ApiValidations.loginUser(), UserServices.loginUser);
 routes.put('/updatePassword', ApiValidations.updatePassword(), verifyToken, UserServices.updatePassword);
 
 routes.post('/forgotPassword', ApiValidations.forgotPassword(), UserServices.forgotPassword);
+
+routes.post('/verifyToken', ApiValidations.verify(), verifyToken, UserServices.verify);
 //-----------------
 
 //CHECKLISTS SERVICES

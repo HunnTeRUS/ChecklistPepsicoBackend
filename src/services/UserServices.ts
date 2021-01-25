@@ -73,6 +73,24 @@ export = {
         }
     },
 
+    async verify(request : Request, response: Response) {
+        const _id = request.query._id
+
+        try {
+            const user = await User.findOne({ "_id": _id })
+            const tokenReceived = request.body.token || request.query.token  || request.headers['x-access-token'] || request.headers['x-auth-token'] || request.headers['token']
+            if (user) {
+                response.header('x-access-token', tokenReceived);
+                return response.status(200).json(userLoginInterfaceToJson(user));
+            } else {
+                return response.status(404).json({ error: "Não existe nenhum usuario com este id." });
+            }
+        } catch (e) {
+            console.log(e)
+            return response.status(400).json({ error: "Não foi possível buscar este usuario!", e });
+        }
+    },
+
     async removeUser(request : Request, response: Response) {
         const {_id} = request.query
 
@@ -144,6 +162,7 @@ export = {
             if (pass == password) {
                 const userJson = userLoginInterfaceToJson(result);
                 const token = generateToken(userJson);
+
                 response.header('x-access-token', token);
                 response.json(userJson);
             } else {

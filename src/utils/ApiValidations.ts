@@ -24,6 +24,14 @@ export = {
         });
     },
 
+    verify() {
+        return celebrate({
+            [Segments.QUERY]: Joi.object().keys({
+                _id: Joi.string().required()
+            }),
+        });
+    },
+
     getUserByName() {
         return celebrate({
             [Segments.QUERY]: Joi.object().keys({
@@ -126,8 +134,7 @@ export = {
                 unity: Joi.string().required(),
                 hadContactWithSomeoneInfected: Joi.boolean().required(),
                 hadSymptoms: Joi.boolean().required(),
-                isCarryingAlcoholAndMask: Joi.boolean().required(),
-                pdfPath: Joi.string().required(),
+                isCarryingAlcoholAndMask: Joi.boolean().required()
             }),
         });
     },

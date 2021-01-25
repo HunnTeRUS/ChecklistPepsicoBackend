@@ -1,4 +1,5 @@
 export default interface UserInterface {
+    _id: String,
     cpf: String,
     rg: String,
     name: String,
@@ -8,6 +9,15 @@ export default interface UserInterface {
 }
 
 export interface UserLoginInterface {
+    _id: String,
+    cpf: String,
+    rg: String,
+    name: String,
+    shipping: String,
+    email: String,
+}
+
+export interface UserLoginInterfaceRegister {
     cpf: String,
     rg: String,
     name: String,

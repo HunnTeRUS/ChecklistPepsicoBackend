@@ -49,9 +49,7 @@ export = {
                 }); 
             });
             
-            return response.status(200).json(
-                { error: 'Done!' 
-            }); 
+            return response.status(200).json({}); 
         }
 
     },

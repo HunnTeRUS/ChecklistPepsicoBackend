@@ -18,7 +18,7 @@ export async function verifyToken(request : Request, response: Response, next: N
         jwt.verify(token, security.secret, function(err:any, decoded:any) {
             if (err) {
                 console.log(err)
-                return response.status(401).json({ error: "Acesso negado.", message: 'Invalid token' });
+                return response.status(401).json({ error: "Access Denied. Invalid token." });
             }
             (<any>request).decoded = decoded;
             next();
@@ -26,8 +26,7 @@ export async function verifyToken(request : Request, response: Response, next: N
     } else {
         console.log('Error 403: Access Denied - No token provided')
         return response.status(403).send({
-            error: 'Unauthorized access.',
-            message: 'No token provided.'
+            error: 'Unauthorized access. No token provided.',
         });
     }
 } 

@@ -12,8 +12,9 @@ export default function userInterfaceToJson(user: UserInterface) {
     }
 }
 
-export function userLoginInterfaceToJson(user: UserLoginInterface) {
+export function userLoginInterfaceToJson(user: UserInterface) {
     return {
+        _id: user._id,
         cpf: user.cpf,
         rg: user.rg,
         name: user.name,
