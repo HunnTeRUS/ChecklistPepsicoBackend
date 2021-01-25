@@ -48,7 +48,7 @@ routes.post('/createCarrier', ApiValidations.createCarrier(), verifyToken, Compa
 
 routes.get('/listCarriers', CompanyServices.listCarriers);
 
-routes.get('/listCarriersById', ApiValidations.listCarriersById(), CompanyServices.listCarriersById);
+routes.get('/getCarrierById', ApiValidations.listCarriersById(), CompanyServices.listCarriersById);
 
 routes.get('/listCarriersByName', ApiValidations.listCarriersByName(), CompanyServices.listCarriersByName);
 
