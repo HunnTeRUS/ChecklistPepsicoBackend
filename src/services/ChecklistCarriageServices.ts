@@ -4,6 +4,7 @@ import createPdf from '../utils/GeneratePDF'
 import User from '../models/User'
 import ChecklistCarriage from '../models/ChecklistCarriage'
 import SecurityInterface, { SecurityInterfaceDTO } from "../interfaces/SecurityInterface";
+import UserInterface from "../interfaces/UserInterface";
 
 export = { 
     async createChecklist(request: Request, response: Response) {
@@ -64,10 +65,32 @@ export = {
             || 
             (offset === 0 && limit === 0)) {
 
-            return response.status(200).json(await ChecklistCarriage.find().skip(0).limit(10));
+            var listCheck : SecurityInterface[] = await ChecklistCarriage.find().skip(0).limit(20)
+
+            for(var i = 0; i<  listCheck.length; i++) {
+                listCheck[i].realizedBy = await User.findOne({ "_id": listCheck[i].realizedBy }).name;
+                console.log(listCheck[i].realizedBy)
+            }
+
+            return response.status(200).json(listCheck);
         }
 
-        else return response.status(200).json(await ChecklistCarriage.find().skip(offset).limit(limit));
+        else {
+            var listCheck : SecurityInterface[] = await ChecklistCarriage.find().skip(offset).limit(limit)
+
+            for(var i = 0; i<listCheck.length; i++) {
+                const user : UserInterface = await User.findOne({ "_id": listCheck[i].realizedBy })
+                listCheck[i].realizedBy = user.name
+            }
+
+            return response.status(200).json(listCheck)
+        };
+    },
+
+    async getChecklistById(request: Request, response: Response) {
+        const _id = request.query._id
+
+        return response.status(200).json(await ChecklistCarriage.findOne({_id: _id}));
     },
 
     async listChecklistByDate(request: Request, response: Response) {

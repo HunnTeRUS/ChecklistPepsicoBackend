@@ -37,6 +37,10 @@ routes.get('/listCovidChecklists', ApiValidations.listCovidChecklist(), Checklis
 
 routes.get('/listSecurityChecklists', ApiValidations.listCarriageChecklist(), ChecklistCarriageServices.listChecklist);
 
+routes.get('/getCovidChecklistsById', ApiValidations.getChecklistByID(), ChecklistCovidServices.getChecklistByID);
+
+routes.get('/getSecurityChecklistsById', ApiValidations.getCarriageChecklistById(), ChecklistCarriageServices.getChecklistById);
+
 routes.get('/listSecurityChecklistsByDate', ApiValidations.listCarriageChecklistByDate(), ChecklistCarriageServices.listChecklistByDate);
 
 routes.get('/listCovidChecklistsByDate', ApiValidations.listCovidChecklistByDate(), ChecklistCovidServices.listChecklistByDate);

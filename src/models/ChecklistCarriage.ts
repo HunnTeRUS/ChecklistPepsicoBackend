@@ -7,6 +7,7 @@ const ChecklistsCarriageSchema = mongoose.Schema({
     driverCPF: String,
     driverName: String,
     coDriverCPF: String,
+    realizedBy: String,
     coDriverName: String,
     truckPlate: String,
     currentUnit: String,

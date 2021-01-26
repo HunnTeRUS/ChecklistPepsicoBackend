@@ -63,10 +63,16 @@ export = {
             || 
             (offset === 0 && limit === 0)) {
 
-            return response.status(200).json(await ChecklistsCovid.find().skip(0).limit(10));
+            return response.status(200).json(await ChecklistsCovid.find().skip(0).limit(20));
         }
 
         else return response.status(200).json(await ChecklistsCovid.find().skip(offset).limit(limit));
+    },
+
+    async getChecklistByID(request: Request, response: Response) {
+        const _id = request.query._id
+
+        return response.status(200).json(await ChecklistsCovid.findOne({_id: _id}));
     },
 
     async listChecklistByDate(request: Request, response: Response) {

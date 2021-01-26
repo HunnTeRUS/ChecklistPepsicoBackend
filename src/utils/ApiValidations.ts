@@ -87,7 +87,7 @@ export = {
                 driverCPF: Joi.string().min(11).max(11).required(),
                 driverName: Joi.string().required(),
                 coDriverCPF: Joi.string().min(11).max(11).optional(),
-                coDriverName: Joi.string().min(11).max(11).optional(),
+                coDriverName: Joi.string().optional(),
                 truckPlate: Joi.string().min(7).max(7).required(),
                 currentUnit: Joi.string().required(),
                 carriageInfos: Joi.object({
@@ -109,6 +109,14 @@ export = {
             [Segments.QUERY]: Joi.object().keys({
                 limit: Joi.number().min(0).optional(),
                 offset: Joi.number().min(0).optional()
+            }),
+        });
+    },
+
+    getCarriageChecklistById() {
+        return celebrate({
+            [Segments.QUERY]: Joi.object().keys({
+                _id: Joi.string().required(),
             }),
         });
     },
@@ -144,6 +152,14 @@ export = {
             [Segments.QUERY]: Joi.object().keys({
                 limit: Joi.number().min(0).optional(),
                 offset: Joi.number().min(0).optional()
+            }),
+        });
+    },
+
+    getChecklistByID() {
+        return celebrate({
+            [Segments.QUERY]: Joi.object().keys({
+                _id: Joi.string().required(),
             }),
         });
     },

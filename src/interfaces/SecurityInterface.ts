@@ -17,7 +17,8 @@ export default interface SecurityInterface {
         withoutAdornments: Boolean,
     },
     observations: String,
-    infringementExplanation: String
+    infringementExplanation: String,
+    pdfPath: String
 }
 
 export interface SecurityInterfaceDTO {
