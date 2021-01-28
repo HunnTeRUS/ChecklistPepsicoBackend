@@ -5,6 +5,7 @@ import generateToken from '../authentication/Auth'
 import UserInterface, { UserLoginInterface } from "../interfaces/UserInterface";
 import {userLoginInterfaceToJson} from '../utils/userUtils'
 import Mailer from "../utils/mailer";
+import Carriers from "../models/Carriers";
 
 export = {
     async createUser(request : Request, response: Response) {
@@ -168,6 +169,35 @@ export = {
             } else {
                 return response.status(400).json({ error: 'E-mail e/ou senha incorretos!' });
             }
+        } else {
+            return response.status(400).json({ error: 'E-mail e/ou senha incorretos!' });
+        }
+    },
+
+    async updateCurrentCarrier(request : Request, response: Response) {
+        const { _idUser, _idCarrier } = request.query;
+        const token = request.body.token || request.query.token  || request.headers['x-access-token'] || request.headers['x-auth-token'] || request.headers['token']
+
+        console.log(_idUser, _idCarrier)
+        const result : UserInterface = await User.findOne({ "_id": _idUser });
+        if (result) {
+
+            console.log(result)
+            const carrier = await Carriers.findOne({"_id": _idCarrier})
+
+
+            console.log(carrier)
+            if(carrier) {
+                await User.updateOne({ "_id": _idUser }, {"shipping": _idCarrier});
+            } else {
+                return response.status(404).json({ error: 'Não existe nenhuma transportadora com este id!' });
+            }
+            
+            const newUser : UserInterface = await User.findOne({ "_id": _idUser });
+            const userJson = userLoginInterfaceToJson(newUser);
+
+            response.header('x-access-token', token);
+            response.json(userJson);
         } else {
             return response.status(400).json({ error: 'E-mail e/ou senha incorretos!' });
         }

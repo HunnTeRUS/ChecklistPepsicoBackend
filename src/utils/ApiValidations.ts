@@ -32,6 +32,15 @@ export = {
         });
     },
 
+    updateUserCarrier() {
+        return celebrate({
+            [Segments.QUERY]: Joi.object().keys({
+                _idUser: Joi.string().required(),
+                _idCarrier: Joi.string().required(),
+            }),
+        });
+    },
+
     getUserByName() {
         return celebrate({
             [Segments.QUERY]: Joi.object().keys({
@@ -86,8 +95,8 @@ export = {
                 date: Joi.date().required(),
                 driverCPF: Joi.string().min(11).max(11).required(),
                 driverName: Joi.string().required(),
-                coDriverCPF: Joi.string().min(11).max(11).optional(),
-                coDriverName: Joi.string().optional(),
+                coDriverCPF: Joi.string().min(11).max(11).allow(""),
+                coDriverName: Joi.string().allow(""),
                 truckPlate: Joi.string().min(7).max(7).required(),
                 currentUnit: Joi.string().required(),
                 carriageInfos: Joi.object({
@@ -98,8 +107,8 @@ export = {
                     safetyShoes: Joi.boolean().required(),
                     withoutAdornments: Joi.boolean().required()
                 }), 
-                observations: Joi.string().optional(),
-                infringementExplanation: Joi.string().optional(),
+                observations: Joi.string().allow(""),
+                infringementExplanation: Joi.string().allow(""),
             }),
         });
     },

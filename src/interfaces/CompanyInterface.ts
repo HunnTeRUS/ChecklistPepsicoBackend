@@ -21,6 +21,15 @@ export interface UnitInterface {
     city: String,
 }
 
+export interface UnitInterfaceModel {
+    _id: String,
+    name: String,
+    streetName: String,
+    cep: String,
+    state: String,
+    city: String,
+}
+
 export interface CompanyCarrierInterfaceDTO {
     name: String,
     units: [

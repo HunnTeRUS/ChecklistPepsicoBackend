@@ -47,7 +47,9 @@ export = {
             _id: _id
         });
 
-        return response.status(200).json(carriers)
+        if(carriers)
+            return response.status(200).json(carriers)
+        else return response.status(404).json({error: "Não existe nenhuma transportadora com este id"})
     },
 
     async listCarriersByName(request: Request, response: Response) {
@@ -72,7 +74,9 @@ export = {
         const {_id} = request.query;
         const obj : UnitInterface = request.body;
         
-        const carriers = await Company.updateOne({ "_id": _id }, { $push: { units: obj } })
+        await Company.updateOne({ "_id": _id }, { $push: { units: obj } })
+
+        const carriers = await Company.findOne({ "_id": _id })
 
         return response.status(200).json(carriers)
     },
@@ -89,5 +93,15 @@ export = {
         }
 
         return response.status(200).json()
+    },
+
+    async getUnitById(request: Request, response: Response) {
+        const {_idUnit, _idCarrier} = request.query;
+        
+        const exist = await Company.findOne({ "_id": _idCarrier, "units" : { "_id" : _idUnit } })
+
+        if(exist) {
+            return response.status(200).json(exist)
+        } else return response.status(404).json({error: "Não existe nenhuma unidade com estes ids"})
     },
 }
