@@ -23,14 +23,14 @@ export = {
         const {_id} = request.query;
 
         const exist = await Company.findOne({
-            "_id": _id
+            "_id": String(_id)
         })
 
-        if (!exist) {
-            await Company.deleteOne({_id: _id});
+        if (exist) {
+            await Company.deleteOne({_id: String(_id)});
             return response.status(200).json()
         } else {
-            return  response.status(404).json({error: "Não existe nenhuma transportadora com este id."})
+            return response.status(404).json({error: "Não existe nenhuma transportadora com este id."})
         }
     },
 
@@ -61,11 +61,13 @@ export = {
     },
 
     async updateCarrierName(request: Request, response: Response) {
-        const {_id, name} = request.query;
+        const {_id, name} = request.body;
 
-        const carriers = await Company.updateOne({ "_id": _id }, {
+        await Company.updateOne({ "_id": _id }, {
             "name": name
         })
+
+        const carriers = await Company.findOne({ "_id": _id })
 
         return response.status(200).json(carriers)
     },

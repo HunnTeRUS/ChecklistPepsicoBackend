@@ -196,7 +196,15 @@ export = {
                         state: Joi.string().min(2).max(2).required(),
                         city: Joi.string().required(),
                     })
-                )
+                ).allow(null)
+            }),
+        });
+    },
+
+    updateCarrier() {
+        return celebrate({
+            [Segments.BODY]: Joi.object().keys({
+                name: Joi.string().required(),
             }),
         });
     },
@@ -227,7 +235,7 @@ export = {
 
     updateCarrierName() {
         return celebrate({
-            [Segments.QUERY]: Joi.object().keys({
+            [Segments.BODY]: Joi.object().keys({
                 name: Joi.string().required(),
                 _id: Joi.string().required(),
             }),
