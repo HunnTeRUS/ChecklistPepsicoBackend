@@ -72,6 +72,25 @@ export = {
         return response.status(200).json(carriers)
     },
 
+    async updateUnit(request: Request, response: Response) {
+        const obj = request.body as UnitInterface;
+        const {_idCarrier, _idUnit} = request.query;
+
+        await Company.updateOne({ "_id": _idCarrier, "units" : { "_id" : _idUnit } }, {
+            $set: {
+              'units.$.name': obj.name,
+              'units.$.cep': obj.cep,
+              'units.$.city': obj.city,
+              'units.$.state': obj.state,
+              'units.$.streetName': obj.streetName,
+            },
+        })
+
+        const carriers = await Company.findOne({ "_id": _idCarrier })
+
+        return response.status(200).json(carriers)
+    },
+
     async insertUnity(request: Request, response: Response) {
         const {_id} = request.query;
         const obj : UnitInterface = request.body;

@@ -242,10 +242,27 @@ export = {
         });
     },
 
+    updateUnit() {
+        return celebrate({
+            [Segments.BODY]: Joi.object().keys({
+                name: String,
+                streetName: String,
+                cep: String,
+                state: String,
+                city: String,
+            }),
+            [Segments.QUERY]: Joi.object().keys({
+                _idCarrier: String,
+                _idUnit: String
+            }),
+        });
+    },
+
     insertUnity() {
         return celebrate({
             [Segments.BODY]: Joi.object().keys({
                 name: Joi.string().required(),
+                number: Joi.string().required(),
                 streetName: Joi.string().required(),
                 cep: Joi.string().min(8).max(8),
                 state: Joi.string().min(2).max(2).required(),
