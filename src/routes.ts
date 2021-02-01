@@ -66,7 +66,7 @@ routes.post('/insertUnity', ApiValidations.insertUnity(), verifyToken, CompanySe
 
 routes.delete('/removeUnity', ApiValidations.removeUnity(), verifyToken, CompanyServices.removeUnity);
 
-routes.put('/updateUnity', ApiValidations.updateUnit(), verifyToken, CompanyServices.updateCarrierName);
+routes.put('/updateUnity', ApiValidations.updateUnit(), verifyToken, CompanyServices.updateUnit);
 
 //------------------
 

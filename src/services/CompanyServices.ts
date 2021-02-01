@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import Company from '../models/Carriers'
-import { CompanyCarrierInterfaceDTO, UnitInterface } from '../interfaces/CompanyInterface'
+import { CompanyCarrierInterfaceDTO, UnitInterface, UnitInterfaceModel } from '../interfaces/CompanyInterface'
 
 export = {
     async createCarrier(request: Request, response: Response) {
@@ -73,22 +73,27 @@ export = {
     },
 
     async updateUnit(request: Request, response: Response) {
-        const obj = request.body as UnitInterface;
-        const {_idCarrier, _idUnit} = request.query;
+        const obj = request.body as UnitInterfaceModel;
+        const {_idCarrier} = request.query;
 
-        await Company.updateOne({ "_id": _idCarrier, "units" : { "_id" : _idUnit } }, {
-            $set: {
-              'units.$.name': obj.name,
-              'units.$.cep': obj.cep,
-              'units.$.city': obj.city,
-              'units.$.state': obj.state,
-              'units.$.streetName': obj.streetName,
-            },
-        })
+        try {
+            await Company.updateOne({ "_id": _idCarrier, "units._id": obj._id }, {
+                $set: {
+                    'units.$.name': String(obj.name),
+                    'units.$.cep': String(obj.cep),
+                    'units.$.city': String(obj.city),
+                    'units.$.state': String(obj.state),
+                    'units.$.streetName': String(obj.streetName),
+                },
+            })
 
-        const carriers = await Company.findOne({ "_id": _idCarrier })
+            const carriers = await Company.findOne({ "_id": _idCarrier })
 
-        return response.status(200).json(carriers)
+            return response.status(200).json(carriers)
+        } catch(e) {
+            return response.status(400).json({error: e})
+        }
+
     },
 
     async insertUnity(request: Request, response: Response) {

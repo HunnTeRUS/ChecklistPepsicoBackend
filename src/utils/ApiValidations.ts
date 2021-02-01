@@ -245,6 +245,7 @@ export = {
     updateUnit() {
         return celebrate({
             [Segments.BODY]: Joi.object().keys({
+                _id: String,
                 name: String,
                 streetName: String,
                 cep: String,
@@ -253,7 +254,6 @@ export = {
             }),
             [Segments.QUERY]: Joi.object().keys({
                 _idCarrier: String,
-                _idUnit: String
             }),
         });
     },

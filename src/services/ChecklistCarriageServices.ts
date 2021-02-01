@@ -85,27 +85,27 @@ export = {
             (offset === 0 && limit === 0)) {
 
             listCheck = await ChecklistCarriage.find().skip(0).limit(20)
-        }
-
-        else {
+        } else {
             listCheck = await ChecklistCarriage.find().skip(offset).limit(limit)
-
         };
+
         for (var i = 0; i < listCheck.length; i++) {
             const name = await User.findOne({ "_id": String(listCheck[i].realizedBy) })
             listCheck[i].realizedBy = name.name
 
             const unit = await Carriers.findOne({ "units._id": String(listCheck[i].currentUnit) })
 
-            const units: UnitInterfaceModel[] = unit.units;
+            if (unit) {
+                const units: UnitInterfaceModel[] = unit.units;
 
-            for (var j = 0; j < units.length; j++) {
-                if (String(units[j]._id) === String(listCheck[i].currentUnit)){
-                    console.log("ENTROU")
-                    listCheck[i].currentUnit = String(units[j].name)
+                for (var j = 0; j < units.length; j++) {
+                    if (String(units[j]._id) === String(listCheck[i].currentUnit)) {
+                        listCheck[i].currentUnit = String(units[j].name)
+                    }
                 }
+            } else {
+                listCheck[i].currentUnit = "Unidade não consta mais no sistema."
             }
-
         }
 
         return response.status(200).json(listCheck)
