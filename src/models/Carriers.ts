@@ -7,6 +7,7 @@ const CompanySchema = mongoose.Schema({
         {
             name: String,
             streetName: String,
+            number: String,
             cep: String,
             state: String,
             city: String,

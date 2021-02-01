@@ -7,6 +7,7 @@ export default interface CompanyInterface {
             name: String,
             streetName: String,
             cep: String,
+            number: String,
             state: String,
             city: String,
         }
@@ -18,12 +19,14 @@ export interface UnitInterface {
     streetName: String,
     cep: String,
     state: String,
+    number: String,
     city: String,
 }
 
 export interface UnitInterfaceModel {
     _id: String,
     name: String,
+    number: String,
     streetName: String,
     cep: String,
     state: String,
@@ -38,6 +41,7 @@ export interface CompanyCarrierInterfaceDTO {
             streetName: String,
             cep: String,
             state: String,
+            number: String,
             city: String,
         }
     ]

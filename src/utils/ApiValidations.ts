@@ -192,6 +192,7 @@ export = {
                     Joi.object({
                         name: Joi.string().required(),
                         streetName: Joi.string().required(),
+                        number: Joi.string().min(1).max(8).required(),
                         cep: Joi.string().min(8).max(8),
                         state: Joi.string().min(2).max(2).required(),
                         city: Joi.string().required(),
@@ -245,15 +246,16 @@ export = {
     updateUnit() {
         return celebrate({
             [Segments.BODY]: Joi.object().keys({
-                _id: String,
-                name: String,
-                streetName: String,
-                cep: String,
-                state: String,
-                city: String,
+                _id: Joi.string().required(),
+                name: Joi.string().required(),
+                number: Joi.string().required(),
+                streetName: Joi.string().required(),
+                cep: Joi.string().min(8).max(8),
+                state: Joi.string().min(2).max(2).required(),
+                city: Joi.string().required(),
             }),
             [Segments.QUERY]: Joi.object().keys({
-                _idCarrier: String,
+                _idCarrier: Joi.string().required(),
             }),
         });
     },

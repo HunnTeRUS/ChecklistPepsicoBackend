@@ -83,6 +83,7 @@ export = {
                     'units.$.cep': String(obj.cep),
                     'units.$.city': String(obj.city),
                     'units.$.state': String(obj.state),
+                    'units.$.number': String(obj.number),
                     'units.$.streetName': String(obj.streetName),
                 },
             })
