@@ -70,5 +70,4 @@ routes.put('/updateUnity', ApiValidations.updateUnit(), verifyToken, CompanyServ
 
 //------------------
 
-
 export default routes;

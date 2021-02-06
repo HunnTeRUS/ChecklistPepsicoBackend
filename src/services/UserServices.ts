@@ -178,15 +178,12 @@ export = {
         const { _idUser, _idCarrier } = request.query;
         const token = request.body.token || request.query.token  || request.headers['x-access-token'] || request.headers['x-auth-token'] || request.headers['token']
 
-        console.log(_idUser, _idCarrier)
         const result : UserInterface = await User.findOne({ "_id": _idUser });
         if (result) {
 
-            console.log(result)
             const carrier = await Carriers.findOne({"_id": _idCarrier})
 
 
-            console.log(carrier)
             if(carrier) {
                 await User.updateOne({ "_id": _idUser }, {"shipping": _idCarrier});
             } else {

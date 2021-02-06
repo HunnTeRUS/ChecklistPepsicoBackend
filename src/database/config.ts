@@ -6,11 +6,20 @@ const env = load({
     SECRET: String,
     TOKEN_LIFE: String,
     EMAIL: String,
-    EMAIL_PASS: String
+    EMAIL_PASS: String,
+    BUCKET_NAME: String, 
+    IAM_USER_KEY: String,
+    IAM_USER_SECRET: String,
 });
 
 const db = {
     uri: `${env.MONGO}`
+}
+
+const s3 = {
+    BUCKET_NAME: `${env.BUCKET_NAME}`, 
+    IAM_USER_KEY: `${env.IAM_USER_KEY}`,
+    IAM_USER_SECRET: `${env.IAM_USER_SECRET}`,
 }
 
 const security = {
@@ -25,4 +34,4 @@ const email = {
 }
 
 export default db
-export {email,security}
+export {email,security, s3}

@@ -1,12 +1,12 @@
 import { Response, Request } from "express";
-import CheckCovidInterface, { CheckCovidInterfaceDTO } from "../interfaces/ChecklistCovid";
 import createPdf from '../utils/GeneratePDF'
 import User from '../models/User'
 import ChecklistCarriage from '../models/ChecklistCarriage'
 import SecurityInterface, { SecurityInterfaceDTO } from "../interfaces/SecurityInterface";
-import UserInterface from "../interfaces/UserInterface";
 import Carriers from "../models/Carriers";
 import { UnitInterfaceModel } from "../interfaces/CompanyInterface";
+import aws from 'aws-sdk'
+import fs from 'fs'
 
 export = {
     async createChecklist(request: Request, response: Response) {
@@ -150,5 +150,5 @@ export = {
                     date: { $gt: init, $lt: end }
                 }));
         }
-    }
+    },
 }
